@@ -13,13 +13,9 @@ const ListaDeTarefas = () => {
     let tarefasFiltradas = itens
     if (termo !== undefined) {
       tarefasFiltradas = itens.filter(
-        (item) => item.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
+        (item) => item.nome.toLowerCase().search(termo.toLowerCase()) >= 0
       )
-      if (criterio === 'prioridade') {
-        tarefasFiltradas = tarefasFiltradas.filter(
-          (item) => item.prioridade === valor
-        )
-      } else if (criterio === 'status') {
+      if (criterio === 'status') {
         tarefasFiltradas = tarefasFiltradas.filter(
           (item) => item.status === valor
         )
@@ -35,10 +31,10 @@ const ListaDeTarefas = () => {
     let mensagem = ''
     const complemento =
       termo !== undefined && termo.length > 0 ? `e"${termo}"` : ''
-    if (criterio === 'todas') {
-      mensagem = `${quantidade} tarefa(s) encontrada(s) como: todas ${complemento}`
+    if (criterio === 'todos') {
+      mensagem = `${quantidade} contato(s) encontrado(s) como: todos ${complemento}`
     } else {
-      mensagem = `${quantidade} tarefa(s) encontrada(s) como: "${`${criterio} = ${valor}`}" ${complemento}`
+      mensagem = `${quantidade} contato(s) encontrado(s) como: "${`${criterio} = ${valor}`}" ${complemento}`
     }
     return mensagem
   }
@@ -50,12 +46,12 @@ const ListaDeTarefas = () => {
       <Titulo as="p">{mensagem}</Titulo>
       <ul>
         {tarefas.map((t) => (
-          <li key={t.titulo}>
+          <li key={t.nome}>
             <Tarefa
-              descricao={t.descricao}
-              titulo={t.titulo}
+              email={t.email}
+              nome={t.nome}
               status={t.status}
-              prioridade={t.prioridade}
+              contato={t.contato}
               id={t.id}
             />
           </li>

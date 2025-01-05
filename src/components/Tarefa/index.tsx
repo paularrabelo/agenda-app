@@ -11,26 +11,20 @@ import * as enums from '../../utils/enums/Tarefa'
 
 type Props = TarefaClass
 
-const Tarefa = ({
-  titulo,
-  prioridade,
-  status,
-  descricao: descricaoOriginal,
-  id
-}: Props) => {
+const Tarefa = ({ nome: nomeOriginal, status, contato, email, id }: Props) => {
   const dispatch = useDispatch()
   const [estaEdiatando, setEstaEditando] = useState(false)
-  const [descricao, setDescricao] = useState('')
+  const [esteContato, setContato] = useState('')
 
   useEffect(() => {
-    if (descricaoOriginal.length > 0) {
-      setDescricao(descricaoOriginal)
+    if (nomeOriginal.length > 0) {
+      setContato(nomeOriginal)
     }
-  }, [descricaoOriginal])
+  }, [nomeOriginal])
 
   function cancelarEdicao() {
     setEstaEditando(false)
-    setDescricao(descricaoOriginal)
+    setContato(nomeOriginal)
   }
 
   function alteraStatusTarefa(evento: ChangeEvent<HTMLInputElement>) {
@@ -44,28 +38,25 @@ const Tarefa = ({
 
   return (
     <S.Card>
-      <label htmlFor={titulo}>
+      <label htmlFor={nomeOriginal}>
         <input
           type="checkbox"
-          id={titulo}
-          checked={status === enums.Status.CONCLUIDA}
+          id={nomeOriginal}
+          checked={status === enums.Status.FAVORITO}
           onChange={alteraStatusTarefa}
         />
         <S.Titulo>
           {estaEdiatando && <em>Editando: </em>}
-          {titulo}
+          {nomeOriginal}
         </S.Titulo>
       </label>
-      <S.Tag parametro="prioridade" prioridade={prioridade}>
-        {prioridade}
-      </S.Tag>
       <S.Tag parametro="status" status={status}>
         {status}
       </S.Tag>
       <S.Descricao
         disabled={!estaEdiatando}
-        value={descricao}
-        onChange={(evento) => setDescricao(evento.target.value)}
+        value={esteContato}
+        onChange={(evento) => setContato(evento.target.value)}
       />
       <S.BarraAcoes>
         {estaEdiatando ? (
@@ -74,10 +65,10 @@ const Tarefa = ({
               onClick={() => {
                 dispatch(
                   editar({
-                    titulo,
-                    prioridade,
+                    nome: nomeOriginal,
                     status,
-                    descricao: descricaoOriginal,
+                    contato,
+                    email,
                     id
                   })
                 )

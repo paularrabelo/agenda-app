@@ -9,24 +9,24 @@ type TarefasState = {
 const initialState: TarefasState = {
   itens: [
     {
-      titulo: 'Estudar JavaScript',
-      prioridade: enums.Prioridade.IMPORTANTE,
-      status: enums.Status.PENDENTE,
-      descricao: 'Rever aula 5 do módulo',
+      nome: 'Teste sobrenome',
+      email: 'teste@teste.com',
+      status: enums.Status.NORMAL,
+      contato: '37999999999',
       id: 1
     },
     {
-      titulo: 'Estudar TypeScript',
-      prioridade: enums.Prioridade.URGENTE,
-      status: enums.Status.CONCLUIDA,
-      descricao: 'Refazer projetos',
+      nome: 'Teste sobrenome',
+      email: 'teste@teste.com',
+      status: enums.Status.NORMAL,
+      contato: '37999999999',
       id: 2
     },
     {
-      titulo: 'Estudar React',
-      prioridade: enums.Prioridade.URGENTE,
-      status: enums.Status.PENDENTE,
-      descricao: 'Praticar o useEffect',
+      nome: 'Teste sobrenome',
+      email: 'teste@teste.com',
+      status: enums.Status.FAVORITO,
+      contato: '37999999999',
       id: 3
     }
   ]
@@ -53,8 +53,7 @@ const tarefasSlice = createSlice({
     cadastrar: (state, action: PayloadAction<Omit<Tarefa, 'id'>>) => {
       const tarefaJaExiste = state.itens.find(
         (tarefa) =>
-          tarefa.titulo.toLowerCase() ===
-          action.payload.titulo.toLocaleLowerCase()
+          tarefa.nome.toLowerCase() === action.payload.nome.toLocaleLowerCase()
       )
 
       if (tarefaJaExiste) {
@@ -78,8 +77,8 @@ const tarefasSlice = createSlice({
 
       if (indexDaTarefa >= 0) {
         state.itens[indexDaTarefa].status = action.payload.finalizado
-          ? enums.Status.CONCLUIDA
-          : enums.Status.PENDENTE
+          ? enums.Status.FAVORITO
+          : enums.Status.NORMAL
       }
     }
   }

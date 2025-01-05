@@ -5,19 +5,14 @@ import * as enums from '../../utils/enums/Tarefa'
 import { Botao } from '../../styles'
 
 type TagProps = {
-  prioridade?: enums.Prioridade
   status?: enums.Status
-  parametro: 'status' | 'prioridade'
+  parametro: 'status'
 }
 
 function corDeFundo(props: TagProps): string {
   if (props.parametro === 'status') {
-    if (props.status === enums.Status.PENDENTE) return variaveis.amarelo
-    if (props.status === enums.Status.CONCLUIDA) return variaveis.verde
-  } else {
-    if (props.prioridade === enums.Prioridade.IMPORTANTE)
-      return variaveis.laranjaClaro
-    if (props.prioridade === enums.Prioridade.URGENTE) return variaveis.vermelho
+    if (props.status === enums.Status.NORMAL) return variaveis.amarelo
+    if (props.status === enums.Status.FAVORITO) return variaveis.verde
   }
   return '#ccc'
 }

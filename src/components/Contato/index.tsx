@@ -45,7 +45,7 @@ const Contato = ({
     dispatch(
       alteraStatus({
         id,
-        finalizado: evento.target.checked
+        favoritado: evento.target.checked
       })
     )
   }

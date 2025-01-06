@@ -9,24 +9,24 @@ type ContatosState = {
 const initialState: ContatosState = {
   itens: [
     {
-      nome: 'Teste sobrenome',
-      email: 'teste@teste.com',
+      nome: 'Jose Fontes Ribeiro',
+      email: 'josefonts@gmail.com',
       status: enums.Status.NORMAL,
-      contato: '37999999999',
+      contato: '(37)99909-9909',
       id: 1
     },
     {
-      nome: 'Teste sobrenome',
-      email: 'teste@teste.com',
+      nome: 'Maria Conceição',
+      email: 'mariac@gmail.com',
       status: enums.Status.NORMAL,
-      contato: '37999999999',
+      contato: '(37)99110-5535',
       id: 2
     },
     {
-      nome: 'Teste sobrenome',
-      email: 'teste@teste.com',
+      nome: 'Junior Silva',
+      email: 'jrsilva@hotmail.com',
       status: enums.Status.FAVORITO,
-      contato: '37999999999',
+      contato: '(37)99814-1525',
       id: 3
     }
   ]
@@ -69,14 +69,14 @@ const contatosSlice = createSlice({
     },
     alteraStatus: (
       state,
-      action: PayloadAction<{ id: number; finalizado: boolean }>
+      action: PayloadAction<{ id: number; favoritado: boolean }>
     ) => {
       const indexDoContato = state.itens.findIndex(
         (t) => t.id === action.payload.id
       )
 
       if (indexDoContato >= 0) {
-        state.itens[indexDoContato].status = action.payload.finalizado
+        state.itens[indexDoContato].status = action.payload.favoritado
           ? enums.Status.FAVORITO
           : enums.Status.NORMAL
       }

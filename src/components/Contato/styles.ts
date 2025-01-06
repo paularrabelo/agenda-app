@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
 
-import * as enums from '../../utils/enums/Tarefa'
+import * as enums from '../../utils/enums/Contato'
 import { Botao } from '../../styles'
 
 type TagProps = {
@@ -31,7 +31,7 @@ export const Card = styled.div`
   }
 `
 
-export const Titulo = styled.h3`
+export const Nome = styled.h3`
   font-weight: bold;
   font-size: 18px;
   margin-left: 8px;
@@ -48,7 +48,7 @@ export const Tag = styled.span<TagProps>`
   display: inline-block;
 `
 
-export const Descricao = styled.textarea`
+export const Dados = styled.input`
   color: #8b8b8b;
   font-size: 14px;
   line-height: 24px;

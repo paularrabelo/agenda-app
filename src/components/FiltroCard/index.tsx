@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { alterarFiltro } from '../../store/reducers/filtro'
 import * as S from './styles'
-import * as enums from '../../utils/enums/Tarefa'
+import * as enums from '../../utils/enums/Contato'
 import { RootReducer } from '../../store'
 
 export type Props = {
@@ -12,7 +12,7 @@ export type Props = {
 
 const FiltroCard = ({ legenda, criterio, valor }: Props) => {
   const dispatch = useDispatch()
-  const { filtro, tarefas } = useSelector((state: RootReducer) => state)
+  const { filtro, contatos } = useSelector((state: RootReducer) => state)
 
   const verificaEstaAtivo = () => {
     const mesmoCriterio = filtro.criterio === criterio
@@ -21,10 +21,10 @@ const FiltroCard = ({ legenda, criterio, valor }: Props) => {
     return mesmoCriterio && mesmoValor
   }
 
-  const contarTarefas = () => {
-    if (criterio === 'todos') return tarefas.itens.length
+  const contarContatos = () => {
+    if (criterio === 'todos') return contatos.itens.length
     if (criterio === 'status') {
-      return tarefas.itens.filter((item) => item.status === valor).length
+      return contatos.itens.filter((item) => item.status === valor).length
     }
   }
 
@@ -36,7 +36,7 @@ const FiltroCard = ({ legenda, criterio, valor }: Props) => {
       })
     )
   }
-  const contador = contarTarefas()
+  const contador = contarContatos()
   const ativo = verificaEstaAtivo()
   return (
     <S.Card ativo={ativo} onClick={filtrar}>

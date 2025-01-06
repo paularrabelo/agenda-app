@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import { BotaoSalvar, MainContainer, Titulo } from '../../styles'
 import { Form, Opcoes, Opcao } from './styles'
 import { Campo } from '../../styles'
-import * as enums from '../../utils/enums/Tarefa'
-import { cadastrar } from '../../store/reducers/tarefas'
+import * as enums from '../../utils/enums/Contato'
+import { cadastrar } from '../../store/reducers/contatos'
 
 const Formulario = () => {
   const dispatch = useDispatch()
@@ -24,7 +24,7 @@ const Formulario = () => {
         nome,
         contato,
         email,
-        status: enums.Status.NORMAL
+        status
       })
     )
     navigate('/')

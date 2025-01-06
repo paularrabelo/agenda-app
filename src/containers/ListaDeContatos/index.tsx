@@ -1,27 +1,27 @@
 import { useSelector } from 'react-redux'
 
-import Tarefa from '../../components/Tarefa'
+import Contato from '../../components/Contato'
 import { MainContainer, Titulo } from '../../styles'
 import { RootReducer } from '../../store'
 
-const ListaDeTarefas = () => {
-  const { itens } = useSelector((state: RootReducer) => state.tarefas)
+const ListaDeContatos = () => {
+  const { itens } = useSelector((state: RootReducer) => state.contatos)
   const { termo, criterio, valor } = useSelector(
     (state: RootReducer) => state.filtro
   )
-  const filtraTarefas = () => {
-    let tarefasFiltradas = itens
+  const filtraContatos = () => {
+    let contatosFiltradas = itens
     if (termo !== undefined) {
-      tarefasFiltradas = itens.filter(
+      contatosFiltradas = itens.filter(
         (item) => item.nome.toLowerCase().search(termo.toLowerCase()) >= 0
       )
       if (criterio === 'status') {
-        tarefasFiltradas = tarefasFiltradas.filter(
+        contatosFiltradas = contatosFiltradas.filter(
           (item) => item.status === valor
         )
       }
 
-      return tarefasFiltradas
+      return contatosFiltradas
     } else {
       return itens
     }
@@ -39,15 +39,15 @@ const ListaDeTarefas = () => {
     return mensagem
   }
 
-  const tarefas = filtraTarefas()
-  const mensagem = exibeMensagem(tarefas.length)
+  const contatos = filtraContatos()
+  const mensagem = exibeMensagem(contatos.length)
   return (
     <MainContainer>
       <Titulo as="p">{mensagem}</Titulo>
       <ul>
-        {tarefas.map((t) => (
+        {contatos.map((t) => (
           <li key={t.nome}>
-            <Tarefa
+            <Contato
               email={t.email}
               nome={t.nome}
               status={t.status}
@@ -61,4 +61,4 @@ const ListaDeTarefas = () => {
   )
 }
 
-export default ListaDeTarefas
+export default ListaDeContatos

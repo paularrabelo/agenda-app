@@ -1,6 +1,6 @@
-import * as enums from '../utils/enums/Tarefa'
+import * as enums from '../utils/enums/Contato'
 
-class Tarefa {
+class Contato {
   nome: string
   status: enums.Status
   contato: string
@@ -22,4 +22,4 @@ class Tarefa {
   }
 }
 
-export default Tarefa
+export default Contato

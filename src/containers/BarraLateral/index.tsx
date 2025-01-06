@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { alterarTermo } from '../../store/reducers/filtro'
 import FiltroCard from '../../components/FiltroCard'
-import { Botao, Campo } from '../../styles'
+import { Botao, BotaoCadastrar, Campo } from '../../styles'
 
 import * as S from './styles'
-import * as enums from '../../utils/enums/Tarefa'
+import * as enums from '../../utils/enums/Contato'
 import { useNavigate } from 'react-router-dom'
 
 type Props = {
@@ -21,6 +21,9 @@ const BarraLateral = ({ mostrarFiltros }: Props) => {
       <div>
         {mostrarFiltros ? (
           <>
+            <BotaoCadastrar onClick={() => navigate('/novo')}>
+              Adicionar contato
+            </BotaoCadastrar>
             <Campo
               type="text"
               placeholder="Buscar"

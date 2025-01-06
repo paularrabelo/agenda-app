@@ -51,5 +51,10 @@ export const Botao = styled.button`
 export const BotaoSalvar = styled(Botao)`
   background-color: ${variaveis.verde};
 `
+export const BotaoCadastrar = styled(Botao)`
+  background-color: ${variaveis.verde};
+  margin-bottom: 8px;
+  width: 100%;
+`
 
 export default EstiloGlobal

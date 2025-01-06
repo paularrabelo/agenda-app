@@ -28,6 +28,34 @@ export const Card = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+    cursor: pointer;
+    user-select: none;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    svg {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 30px;
+      width: 30px;
+      transition: all 0.3s;
+      fill: #666;
+    }
+
+    svg:hover {
+      transform: scale(1.1);
+    }
+
+    input:checked ~ svg {
+      fill: #ffeb49;
+    }
   }
 `
 
